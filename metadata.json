@@ -1,0 +1,7 @@
+{
+  "name": "STRATOS 2026 - Andean Intelligence & Geospatial Dashboard",
+  "description": "Advanced intelligence platform for monitoring armed group camps, illicit infrastructure, and geospatial conflict patterns in Colombia and the Andean region (2026 update).",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
