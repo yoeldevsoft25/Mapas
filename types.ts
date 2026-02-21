@@ -36,13 +36,13 @@ export interface IntelligencePoint extends GeoPoint {
   relatedStructures?: string[];
   source?: string;
   tactics?: string[];
-  intelConfidence?: 'Alta' | 'Media' | 'Baja';
+  intelConfidence?: 'Alta' | 'Media' | 'Baja' | 'Crítica' | 'Confirmada';
 }
 
 // Existing Prediction Point (Standard)
 export interface PredictionPoint extends IntelligencePoint {
   confidence: number;
-  triangulationBasis: string[]; 
+  triangulationBasis: string[];
   strategicValue: string;
   timeWindow: string;
   requiredUnits: string[];
@@ -66,7 +66,7 @@ export interface MovementRoute {
   id: string;
   name: string;
   path: GeoPoint[];
-  type: 'legal' | 'illegal' | 'trocha';
+  type: 'legal' | 'illegal' | 'trocha' | 'fluvial';
   description: string;
   details?: string;
 }
