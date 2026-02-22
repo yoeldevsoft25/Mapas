@@ -562,117 +562,175 @@ export const INTEL_INFRASTRUCTURE: IntelligencePoint[] = [
 ];
 
 export const INTEL_ROUTES: MovementRoute[] = [
+  // I. Corredores Ilegales: Infraestructura Transnacional Principal
   {
-    id: 'rt-venezuela-arauca',
-    name: 'Corredor Fronterizo Arauca-Apure',
+    id: 'rt-leviatan-pacifico',
+    name: 'Operación Leviatán del Sur (Eje Pacífico)',
     type: 'illegal',
-    description: 'Ruta de repliegue y movilidad siguiendo el lindero del río Arauca.',
+    description: 'Principal arteria del narcotráfico a nivel global (2026), conectando Nariño con puertos del Pacífico mexicano.',
     path: [
-      { lat: 7.08, lng: -70.75 },
-      { lat: 7.05, lng: -70.95 },
-      { lat: 7.01, lng: -71.12 },
-      { lat: 6.98, lng: -71.45 },
-      { lat: 6.95, lng: -71.87 },
-      { lat: 7.05, lng: -72.10 }
+      { lat: 1.7986, lng: -78.8152 },
+      { lat: 2.1540, lng: -80.4500 },
+      { lat: 4.0010, lng: -81.6080 },
+      { lat: 12.5000, lng: -92.2000 },
+      { lat: 17.9200, lng: -102.1700 },
+      { lat: 19.0550, lng: -104.3160 }
     ],
-    details: 'Tránsito fluvial nocturno altamente vigilado.'
+    details: 'Operado bajo hegemonía del Cártel de Sinaloa usando semisumergibles interoceánicos. Nivel de vigilancia: Alerta Máxima Tecnológica.'
   },
   {
-    id: 'rt-amazonas-pacifico',
-    name: 'Eje Estratégico Amazonas-Pacífico',
+    id: 'rt-cuna-darien',
+    name: 'La Cuña del Darién (Eje Urabá-Panamá)',
     type: 'illegal',
-    description: 'Corredor de movilidad transnacional desde Leticia hacia el litoral nariñense.',
+    description: 'Corredor criminal terrestre/marítimo más rentable de América, operado por el Clan del Golfo.',
     path: [
-      { lat: -4.21, lng: -69.94 },
-      { lat: -2.50, lng: -71.50 },
-      { lat: -1.00, lng: -74.00 },
-      { lat: 0.00, lng: -75.50 },
-      { lat: 0.50, lng: -76.80 },
-      { lat: 1.20, lng: -77.50 },
-      { lat: 1.80, lng: -78.76 }
+      { lat: 8.0930, lng: -76.7280 },
+      { lat: 8.4260, lng: -76.7860 },
+      { lat: 8.6320, lng: -77.3460 },
+      { lat: 8.7500, lng: -77.4800 },
+      { lat: 8.8100, lng: -77.5300 },
+      { lat: 8.2380, lng: -77.7250 }
     ],
-    details: 'Ruta de economías ilícitas y repliegue estratégico.'
+    details: 'Simbiosis perfecta: narcotráfico en flotas y tráfico de migrantes (uso de mulas o cargueros forzados). Vigilancia severa pero fragmentada.'
   },
+
+  // II. Corredores Fluviales: Las Arterias Logísticas Internas
   {
-    id: 'rt-narino-cordillera',
-    name: 'Corredor Táctico Mpios Cordillera',
-    type: 'trocha',
-    description: 'Ruta de movilidad interna en la subregión Cordillera de Nariño.',
-    path: [
-      { lat: 1.90, lng: -77.30 },
-      { lat: 1.75, lng: -77.45 },
-      { lat: 1.65, lng: -77.55 },
-      { lat: 1.55, lng: -77.65 }
-    ]
-  },
-  {
-    id: 'rt-narino-abades',
-    name: 'Corredor Táctico Abades',
-    type: 'trocha',
-    description: 'Ruta de movilidad interna en la subregión Abades de Nariño.',
-    path: [
-      { lat: 1.40, lng: -77.35 },
-      { lat: 1.50, lng: -77.50 },
-      { lat: 1.65, lng: -77.55 }
-    ]
-  },
-  {
-    id: 'rt-norte-catatumbo',
-    name: 'Ruta de Contrabando Catatumbo-Zulia',
-    type: 'illegal',
-    description: 'Extensa red de trochas para movimiento de precursores químicos y narcóticos.',
-    path: [
-      { lat: 8.20, lng: -73.00 },
-      { lat: 8.40, lng: -72.80 },
-      { lat: 8.60, lng: -72.60 },
-      { lat: 8.90, lng: -72.50 },
-      { lat: 9.10, lng: -72.30 }
-    ]
-  },
-  {
-    id: 'rt-naya-pacifico',
-    name: 'Cuenca del Río Naya a Puerto Merizalde',
+    id: 'rt-serpiente-putumayo',
+    name: 'La Serpiente de la Triple Frontera (Río Putumayo)',
     type: 'fluvial',
-    description: 'Ruta de semi-sumergibles y lanchas go-fast.',
+    description: 'Epicentro del conflicto por el dominio territorial (Comandos de la Frontera, EMC). Evacuación de pasta base y tráfico de insumos.',
     path: [
-      { lat: 3.15, lng: -76.80 },
-      { lat: 3.20, lng: -77.10 },
-      { lat: 3.25, lng: -77.40 },
-      { lat: 3.22, lng: -77.75 }
-    ]
+      { lat: 1.1500, lng: -76.8800 },
+      { lat: 0.4990, lng: -76.4950 },
+      { lat: -0.1870, lng: -74.7820 },
+      { lat: -0.1150, lng: -75.8570 },
+      { lat: -1.1200, lng: -72.0500 },
+      { lat: -2.8850, lng: -69.7460 }
+    ],
+    details: 'Se utilizan semisumergibles fluviales anclados como parásitos a botes de carga y drones de espionaje sobre infantería de marina.'
+  },
+  {
+    id: 'rt-arteria-naya',
+    name: 'La Arteria de Manglares (Cuenca del Naya)',
+    type: 'fluvial',
+    description: 'Frontera natural Cauca-Valle. Cinta transportadora de drogas desde laboratorios de montaña hacia esteros costeros (Buenaventura).',
+    path: [
+      { lat: 3.2350, lng: -76.6850 },
+      { lat: 3.2000, lng: -77.0500 },
+      { lat: 3.1550, lng: -77.3820 },
+      { lat: 3.2950, lng: -77.4980 },
+      { lat: 3.8820, lng: -77.0750 }
+    ],
+    details: 'Dominado por la Estructura Jaime Martínez (FARC) y ELN. Nivel de vigilancia estatal: Críticamente Bajo. Tácticas de minado ribereño.'
+  },
+
+  // III. Trochas Fronterizas: Porosidad, Evasión y Microeconomía del Conflicto
+  {
+    id: 'rt-nudo-tachira',
+    name: 'El Nudo del Táchira (Eje Cúcuta - Tibú)',
+    type: 'trocha',
+    description: 'Entramado de más de 52 trochas activas disputadas por ELN, EMC y Tren de Aragua.',
+    path: [
+      { lat: 8.6320, lng: -72.7750 },
+      { lat: 7.8930, lng: -72.5020 },
+      { lat: 7.8340, lng: -72.4710 },
+      { lat: 7.8220, lng: -72.4540 },
+      { lat: 7.8150, lng: -72.4410 },
+      { lat: 7.9250, lng: -72.4480 }
+    ],
+    details: 'Uso táctico clave: Retaguardia y repliegue estratégico hacia santuarios en Venezuela tras combates. Vigilancia hipermilitarizada ineficiente.'
+  },
+  {
+    id: 'rt-brecha-arena',
+    name: 'La Brecha de Arena (Corredor La Majayura)',
+    type: 'trocha',
+    description: 'Extensión semidesértica en La Guajira, operada por Clan del Golfo y ACSN. Cruce en flotas de vehículos 4x4.',
+    path: [
+      { lat: 11.3810, lng: -71.9320 },
+      { lat: 11.3550, lng: -71.9050 },
+      { lat: 11.3020, lng: -71.8540 },
+      { lat: 11.2580, lng: -71.8010 },
+      { lat: 11.2050, lng: -71.7580 }
+    ],
+    details: 'Canal de importación de arsenales y fentanilo, y exportación de cocaína. Alta resiliencia por topografía árida y clima extremo.'
+  },
+  {
+    id: 'rt-paso-mataje',
+    name: 'El Paso del Mataje (Trochas Sur)',
+    type: 'trocha',
+    description: 'Válvula de escape inmediata entre Nariño y Esmeraldas usada por la Oliver Sinisterra.',
+    path: [
+      { lat: 1.4050, lng: -78.6920 },
+      { lat: 1.2650, lng: -78.8050 },
+      { lat: 1.1820, lng: -78.8100 },
+      { lat: 1.1750, lng: -78.8120 },
+      { lat: 1.1550, lng: -78.8250 }
+    ],
+    details: 'El río Mataje opera como un pivote giratorio asincrónico frente a los operativos militares descoordinados de Colombia y Ecuador.'
   }
 ];
 
 export const INTEL_URBAN: IntelligencePoint[] = [
   {
-    id: 'urb-tumaco-2026',
-    name: 'Nodo Tumaco',
-    description: 'Punto crítico de convergencia de rutas del Pacífico y el Amazonas.',
-    type: 'Enclave Logístico',
-    category: IntelligenceLayer.URBAN,
-    lat: 1.80,
-    lng: -78.76,
-    source: 'Indepaz 2026'
-  },
-  {
     id: 'urb-buenaventura-2026',
-    name: 'Nodo Portuario Buenaventura',
-    description: 'Disputa barrial activa entre Shottas y Espartanos, permeada por carteles transnacionales.',
-    type: 'Enclave Logístico Urbano',
+    name: 'Distrito Especial de Buenaventura',
+    description: 'Tregua urbana frágil. Extorsión sistémica a la cadena logística portuaria. Gobernanza criminal draconiana y alianzas de provisión de armamento con Cártel de Sinaloa y CJNG.',
+    type: 'Nodo Logístico Marítimo',
     category: IntelligenceLayer.URBAN,
-    lat: 3.88,
-    lng: -77.02,
-    source: 'Alerta Temprana Urbana 2026'
+    lat: 3.8825,
+    lng: -77.0258,
+    illegalEconomy: ['Extorsión Portuaria', 'Narcotráfico (Cocaína)', 'Tráfico de Armas'],
+    source: 'Defensoría del Pueblo (Alerta 2026)',
+    intelConfidence: 'Crítica'
   },
   {
     id: 'urb-cucuta-2026',
-    name: 'Eje Fronterizo Cúcuta',
-    description: 'Centro de coordinación de lavado de activos y contrabando de recursos de frontera.',
-    type: 'Centro Coordinador',
+    name: 'San José de Cúcuta y Área Metropolitana',
+    description: 'Guerra asimétrica de sicariato por el monopolio de las trochas y trata de personas. Sofisticada lavandería a través de casas de cambio y el mercado de divisas local.',
+    type: 'Nodo Logístico Fronterizo',
     category: IntelligenceLayer.URBAN,
-    lat: 7.89,
-    lng: -72.50,
-    source: 'Inteligencia Policial'
+    lat: 7.8286,
+    lng: -72.4461,
+    illegalEconomy: ['Trata de Personas', 'Lavado de Activos', 'Contrabando'],
+    source: 'Inteligencia Financiera (UIAF)',
+    intelConfidence: 'Crítica'
+  },
+  {
+    id: 'urb-tumaco-2026',
+    name: 'San Andrés de Tumaco (Perla del Pacífico)',
+    description: 'La economía urbana depende del ciclo cocalero. Tercerización de la seguridad a pandillas sicariales para blindar la exportación logística y los astilleros transnacionales.',
+    type: 'Vórtice Agroindustrial Ilícito',
+    category: IntelligenceLayer.URBAN,
+    lat: 1.8066,
+    lng: -78.7647,
+    illegalEconomy: ['Narcotráfico', 'Sicariato'],
+    source: 'Inteligencia Naval 2026',
+    intelConfidence: 'Alta'
+  },
+  {
+    id: 'urb-cali-2026',
+    name: 'Santiago de Cali (Retaguardia Financiera)',
+    description: 'Cerebro corporativo de las economías del sur. Masiva operación de Lavado de Activos Basado en el Comercio (San Andresitos) de bienes Asiáticos contrabandeados por el narcotráfico.',
+    type: 'Centro Coordinador Corporativo',
+    category: IntelligenceLayer.URBAN,
+    lat: 3.4095,
+    lng: -76.5022,
+    illegalEconomy: ['Lavado de Activos (TBML)', 'Narcomenudeo', 'Sicariato'],
+    source: 'Megaoperativos Cali 2026 / Europol',
+    intelConfidence: 'Confirmada'
+  },
+  {
+    id: 'urb-quibdo-2026',
+    name: 'Quibdó y Cuenca del Atrato',
+    description: 'Guerra urbana encarnizada. "Plan feminicidio" local. Extorsión generalizada y saboteo a pactos de paz. Asedio constante del Clan del Golfo (EGC) por la minería del Atrato.',
+    type: 'Enclave Logístico Fluvial',
+    category: IntelligenceLayer.URBAN,
+    lat: 5.6983,
+    lng: -76.6614,
+    illegalEconomy: ['Extorsión', 'Minería Ilegal (Oro)'],
+    source: 'Mesas de Paz Urbana',
+    intelConfidence: 'Crítica'
   }
 ];
 

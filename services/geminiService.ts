@@ -23,14 +23,14 @@ export const getStrategicAnalysis = async (points: IntelligencePoint[]): Promise
     Analiza la siguiente base de datos táctica:
     
     DATOS TÁCTICOS:
-    ${JSON.stringify(points.map(p => ({ 
-      nombre: p.name, 
-      tipo: p.type, 
-      desc: p.description, 
-      tacticas: p.tactics,
-      fuente: p.source,
-      confianza: p.intelConfidence
-    })))}
+    ${JSON.stringify(points.map(p => ({
+    nombre: p.name,
+    tipo: p.type,
+    desc: p.description,
+    tacticas: p.tactics,
+    fuente: p.source,
+    confianza: p.intelConfidence
+  })))}
 
     Genera una SÍNTESIS DE INTELIGENCIA ESTRATÉGICA en español que incluya:
     1. Resumen Panorama 2026: Analiza la fragmentación y el uso de drones.
@@ -51,9 +51,9 @@ export const getStrategicAnalysis = async (points: IntelligencePoint[]): Promise
           properties: {
             overview: { type: Type.STRING },
             riskLevel: { type: Type.STRING, enum: ['critical', 'high', 'moderate'] },
-            keyInsights: { 
-              type: Type.ARRAY, 
-              items: { type: Type.STRING } 
+            keyInsights: {
+              type: Type.ARRAY,
+              items: { type: Type.STRING }
             }
           },
           required: ["overview", "riskLevel", "keyInsights"]
@@ -134,13 +134,13 @@ export const predictFutureHostiles = async (currentPoints: IntelligencePoint[]):
     });
 
     const rawPredictions = JSON.parse(response.text || '[]');
-    
+
     return rawPredictions.map((pred: any, index: number) => ({
       id: `mission-${index}-${Date.now()}`,
       ...pred,
       type: 'ALERTA DE MISIÓN',
       category: IntelligenceLayer.PREDICTIONS,
-      triangulationBasis: [currentPoints[0]?.id, currentPoints[1]?.id] 
+      triangulationBasis: [currentPoints[0]?.id, currentPoints[1]?.id]
     }));
 
   } catch (error) {
@@ -163,21 +163,24 @@ export const runSDRGASystem = async (currentPoints: IntelligencePoint[]): Promis
 
   const prompt = `
     ${CONTEXT_HEADER_2026}
-    Actúa como el SISTEMA SDRGA (Detección de Repliegues).
+    Actúa como un motor de PATHFINDING para el SISTEMA SDRGA (Detección de Repliegues).
     
-    TU MISIÓN PRINCIPAL AHORA:
-    Detectar los movimientos de "reacomodo" del ELN y Disidencias tras la pérdida de protección política en Venezuela y la presión en la "Paz Total".
+    TU MISIÓN OBLIGATORIA:
+    Detectar movimientos de "reacomodo" o "repliegue táctico" basándote en la base de datos de Infraestructura, Frentes y Acciones Militares.
+    Debes generar 3 ALERTAS SDRGA proyectando hacia dónde huirán las estructuras tras la presión militar actual (Ej. bombardeos, interdicciones).
 
-    FACTORES DE RIESGO ESPECÍFICOS (Pesos ajustados 2026):
-    - w1 (Anomalía): Caída de actividad en Apure y aumento súbito en Arauca/Catatumbo.
-    - w5 (Ruptura): Ruptura de alianza con fuerzas estatales venezolanas (post-Maduro).
-    - w6 (Corredores): Uso intensivo de la ruta Amazonía (Orinoco-Negro) hacia Brasil.
+    CRÍTICO PARA RUTAS (VECTORES FÍSICOS):
+    - Debes generar un punto de "probableDestination" (Centro de Gravedad de acantonamiento / destino). Lat y Lng.
+    - Debes generar "retreatRoutes": Un arreglo que contenga arreglos de cordenadas (lat/lng) formando el camino lógico desde la base original del grupo (el punto de la alerta) hasta su "probableDestination" (Ej. navegando un río, cruzando montañas o bordeando una frontera adyacente). Mínimo 4 puntos por ruta (origen, puntos intermedios tácticos, destino).
 
-    DATOS:
+    FACTORES DE RIESGO ESPECÍFICOS (2026):
+    - Uso intensivo de la ruta Amazonía (Río Puré / Cotuhé) hacia Brasil.
+    - Éxodo de los Comandos de la Frontera desde Ecuador profundo hacia Nariño.
+    - Repliegue de laboratorios del ELN en Zulia hacia el espesor del Catatumbo.
+
+    DATOS DISPONIBLES EN EL MAPA:
     ${JSON.stringify(context)}
 
-    Genera 3 ALERTAS SDRGA simulando este escenario de repliegue y reconfiguración.
-    
     Responde ESTRICTAMENTE en formato JSON array.
   `;
 
@@ -196,6 +199,22 @@ export const runSDRGASystem = async (currentPoints: IntelligencePoint[]): Promis
               description: { type: Type.STRING },
               lat: { type: Type.NUMBER },
               lng: { type: Type.NUMBER },
+              probableDestination: {
+                type: Type.OBJECT,
+                properties: { lat: { type: Type.NUMBER }, lng: { type: Type.NUMBER } },
+                required: ["lat", "lng"]
+              },
+              retreatRoutes: {
+                type: Type.ARRAY,
+                items: {
+                  type: Type.ARRAY,
+                  items: {
+                    type: Type.OBJECT,
+                    properties: { lat: { type: Type.NUMBER }, lng: { type: Type.NUMBER } },
+                    required: ["lat", "lng"]
+                  }
+                }
+              },
               riskScore: { type: Type.NUMBER },
               riskLevel: { type: Type.STRING, enum: ['VERDE', 'AMARILLO', 'ROJO', 'NEGRO'] },
               detectedAnomalies: { type: Type.ARRAY, items: { type: Type.STRING } },
@@ -203,7 +222,7 @@ export const runSDRGASystem = async (currentPoints: IntelligencePoint[]): Promis
               tacticalRecommendations: { type: Type.ARRAY, items: { type: Type.STRING } },
               confidenceInterval: { type: Type.NUMBER }
             },
-            required: ["name", "description", "lat", "lng", "riskScore", "riskLevel", "detectedAnomalies", "criticalCorridors", "tacticalRecommendations"]
+            required: ["name", "description", "lat", "lng", "probableDestination", "retreatRoutes", "riskScore", "riskLevel", "detectedAnomalies", "criticalCorridors", "tacticalRecommendations"]
           }
         }
       }
@@ -218,7 +237,7 @@ export const runSDRGASystem = async (currentPoints: IntelligencePoint[]): Promis
       category: IntelligenceLayer.SDRGA,
       timestamp: new Date().toISOString(),
       influenceZones: [],
-      illegalEconomy: [] 
+      illegalEconomy: []
     }));
 
   } catch (error) {

@@ -267,6 +267,52 @@ const TacticalMap: React.FC<TacticalMapProps> = ({
                 dashArray: '20, 10'
               }}
             />
+
+            {/* AI Retreat Paths & Destinations */}
+            {alert.retreatRoutes && alert.retreatRoutes.map((route, idx) => {
+              const positions: [number, number][] = route.map(pt => [pt.lat, pt.lng]);
+              if (positions.length < 2) return null;
+
+              return (
+                <React.Fragment key={`retreat-${alert.id}-${idx}`}>
+                  {/* Animated Escape Route */}
+                  <Polyline
+                    positions={positions}
+                    pathOptions={{
+                      color: '#ef4444',
+                      weight: 3,
+                      dashArray: '10, 15',
+                      className: 'animate-retreat-pulse'
+                    }}
+                  />
+                  <RouteDecorator positions={positions} color="#ef4444" />
+                </React.Fragment>
+              );
+            })}
+
+            {/* Probable Destination Marker (Crosshair) */}
+            {alert.probableDestination && (
+              <Marker
+                position={[alert.probableDestination.lat, alert.probableDestination.lng]}
+                icon={L.divIcon({
+                  html: `<div class="relative w-0 h-0 flex items-center justify-center">
+                           <div class="absolute w-4 h-4 rounded-full border-2 border-red-500 animate-ping"></div>
+                           <div class="absolute w-2 h-2 bg-red-600 rounded-full"></div>
+                           <div class="absolute w-8 h-[1px] bg-red-400"></div>
+                           <div class="absolute h-8 w-[1px] bg-red-400"></div>
+                         </div>`,
+                  className: 'destination-icon',
+                  iconSize: [0, 0]
+                })}
+              >
+                <Popup className="tactical-popup">
+                  <div className="p-1">
+                    <p className="text-[10px] text-red-400 font-bold uppercase tracking-wider mb-1">Punto de Acantonamiento Previsto</p>
+                    <p className="text-[9px] text-slate-300">Lat: {alert.probableDestination.lat.toFixed(4)}, Lng: {alert.probableDestination.lng.toFixed(4)}</p>
+                  </div>
+                </Popup>
+              </Marker>
+            )}
           </React.Fragment>
         ))}
 
@@ -326,27 +372,29 @@ const TacticalMap: React.FC<TacticalMapProps> = ({
       </MapContainer>
 
       {/* Leyenda SDRGA (Only if Active) */}
-      {activeLayers.has(IntelligenceLayer.SDRGA) && (
-        <div className="absolute top-6 left-1/2 -translate-x-1/2 bg-slate-950/90 backdrop-blur-xl px-6 py-3 rounded-full border border-red-900/50 z-[1000] shadow-[0_0_50px_rgba(220,38,38,0.3)] flex items-center gap-6">
-          <span className="text-[10px] font-black text-red-500 uppercase tracking-widest flex items-center gap-2">
-            <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div> SISTEMA SDRGA ACTIVO
-          </span>
-          <div className="h-4 w-px bg-slate-800"></div>
-          <div className="flex gap-4 text-[9px] font-bold text-slate-400">
-            <span className="flex items-center gap-1"><div className="w-2 h-2 bg-green-500 rounded-sm"></div> VERDE</span>
-            <span className="flex items-center gap-1"><div className="w-2 h-2 bg-yellow-500 rounded-sm"></div> AMARILLO</span>
-            <span className="flex items-center gap-1"><div className="w-2 h-2 bg-red-600 rounded-sm"></div> ROJO</span>
-            <span className="flex items-center gap-1"><div className="w-2 h-2 bg-black border border-red-500 rounded-sm"></div> NEGRO</span>
+      {
+        activeLayers.has(IntelligenceLayer.SDRGA) && (
+          <div className="absolute top-6 left-1/2 -translate-x-1/2 bg-slate-950/90 backdrop-blur-xl px-6 py-3 rounded-full border border-red-900/50 z-[1000] shadow-[0_0_50px_rgba(220,38,38,0.3)] flex items-center gap-6">
+            <span className="text-[10px] font-black text-red-500 uppercase tracking-widest flex items-center gap-2">
+              <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div> SISTEMA SDRGA ACTIVO
+            </span>
+            <div className="h-4 w-px bg-slate-800"></div>
+            <div className="flex gap-4 text-[9px] font-bold text-slate-400">
+              <span className="flex items-center gap-1"><div className="w-2 h-2 bg-green-500 rounded-sm"></div> VERDE</span>
+              <span className="flex items-center gap-1"><div className="w-2 h-2 bg-yellow-500 rounded-sm"></div> AMARILLO</span>
+              <span className="flex items-center gap-1"><div className="w-2 h-2 bg-red-600 rounded-sm"></div> ROJO</span>
+              <span className="flex items-center gap-1"><div className="w-2 h-2 bg-black border border-red-500 rounded-sm"></div> NEGRO</span>
+            </div>
           </div>
-        </div>
-      )}
+        )
+      }
 
       <style>{`
         .animate-spin-slow {
             animation: spin 8s linear infinite;
         }
       `}</style>
-    </div>
+    </div >
   );
 };
 

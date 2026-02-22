@@ -57,6 +57,7 @@ export interface SDRGAAlert extends IntelligencePoint {
   detectedAnomalies: string[]; // e.g., "Caída abrupta de violencia", "Movimiento de civiles"
   probableDestination: GeoPoint; // Centroid of withdrawal
   criticalCorridors: string[]; // Routes being used
+  retreatRoutes: GeoPoint[][]; // Array of calculated withdrawal vectors (paths)
   tacticalRecommendations: string[]; // From the Response Matrix
   confidenceInterval: number; // e.g., 0.85
   timestamp: string;

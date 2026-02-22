@@ -5,16 +5,31 @@
     height: 100%;
     width: 100%;
 }
+
 ::-webkit-scrollbar {
     width: 8px;
 }
+
 ::-webkit-scrollbar-track {
     background: #1e293b;
 }
+
 ::-webkit-scrollbar-thumb {
     background: #475569;
     border-radius: 4px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
     background: #64748b;
+}
+
+@keyframes dash-march {
+    to {
+        stroke-dashoffset: -50;
+    }
+}
+
+.animate-retreat-pulse {
+    animation: dash-march 2s linear infinite;
+    filter: drop-shadow(0 0 5px rgba(239, 68, 68, 0.5));
 }
