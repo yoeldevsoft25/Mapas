@@ -209,13 +209,16 @@ const TacticalMap: React.FC<TacticalMapProps> = ({
       <MapContainer
         center={COLOMBIA_CENTER}
         zoom={6}
+        maxZoom={20}
+        minZoom={2}
         className="map-high-contrast"
         style={{ height: '100%', width: '100%', background: '#ffffff' }}
         zoomControl={false}
       >
         <TileLayer
           attribution='&copy; CARTO'
-          url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
+          url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png"
+          maxZoom={20}
         />
 
         {/* Standard Layers */}
