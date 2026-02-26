@@ -182,10 +182,10 @@ const TacticalMap: React.FC<TacticalMapProps> = ({
     >
       <Popup className="tactical-popup">
         <div className="p-1">
-          <h3 className="font-bold text-slate-100 mb-0.5">{p.name}</h3>
-          <p className="text-[9px] text-red-500 font-black uppercase tracking-tighter mb-1">{p.type}</p>
+          <h3 className="font-bold text-slate-900 mb-0.5">{p.name}</h3>
+          <p className="text-[9px] text-red-600 font-black uppercase tracking-tighter mb-1">{p.type}</p>
           <button
-            className="w-full bg-slate-800 hover:bg-slate-700 py-1.5 rounded text-[10px] text-slate-200 font-bold transition-colors"
+            className="w-full bg-slate-100 hover:bg-slate-200 py-1.5 rounded text-[10px] text-slate-800 font-bold transition-colors border border-slate-200"
             onClick={() => onPointSelect(p)}
           >
             VER FICHA
@@ -200,7 +200,7 @@ const TacticalMap: React.FC<TacticalMapProps> = ({
       <MapContainer
         center={COLOMBIA_CENTER}
         zoom={6}
-        style={{ height: '100%', width: '100%', background: '#f8fafc' }}
+        style={{ height: '100%', width: '100%', background: '#ffffff' }}
         zoomControl={false}
       >
         <TileLayer
@@ -241,12 +241,12 @@ const TacticalMap: React.FC<TacticalMapProps> = ({
               <Popup className="tactical-popup">
                 <div className="p-1 min-w-[200px]">
                   <div className="flex justify-between items-center mb-1">
-                    <h3 className="font-bold text-white uppercase text-xs">ALERTA {alert.riskLevel}</h3>
-                    <span className="text-[10px] font-mono font-bold text-red-400">SCORE: {alert.riskScore}</span>
+                    <h3 className="font-bold text-slate-900 uppercase text-xs">ALERTA {alert.riskLevel}</h3>
+                    <span className="text-[10px] font-mono font-bold text-red-600">SCORE: {alert.riskScore}</span>
                   </div>
-                  <p className="text-[10px] text-slate-300 leading-tight mb-2">{alert.name}</p>
+                  <p className="text-[10px] text-slate-600 leading-tight mb-2">{alert.name}</p>
                   <button
-                    className="w-full bg-red-900 hover:bg-red-800 py-1.5 rounded text-[9px] text-white font-bold transition-colors uppercase"
+                    className="w-full bg-red-600 hover:bg-red-700 py-1.5 rounded text-[9px] text-white font-bold transition-colors uppercase"
                     onClick={() => onPointSelect(alert)}
                   >
                     PROTOCOLO DE RESPUESTA
@@ -307,8 +307,8 @@ const TacticalMap: React.FC<TacticalMapProps> = ({
               >
                 <Popup className="tactical-popup">
                   <div className="p-1">
-                    <p className="text-[10px] text-red-400 font-bold uppercase tracking-wider mb-1">Punto de Acantonamiento Previsto</p>
-                    <p className="text-[9px] text-slate-300">Lat: {alert.probableDestination.lat.toFixed(4)}, Lng: {alert.probableDestination.lng.toFixed(4)}</p>
+                    <p className="text-[10px] text-red-600 font-bold uppercase tracking-wider mb-1">Punto de Acantonamiento Previsto</p>
+                    <p className="text-[9px] text-slate-600">Lat: {alert.probableDestination.lat.toFixed(4)}, Lng: {alert.probableDestination.lng.toFixed(4)}</p>
                   </div>
                 </Popup>
               </Marker>
@@ -348,12 +348,12 @@ const TacticalMap: React.FC<TacticalMapProps> = ({
             >
               <Popup className="tactical-popup">
                 <div className="p-1">
-                  <h3 className="font-bold text-slate-100 mb-0.5">{r.name}</h3>
-                  <p className="text-[9px] text-emerald-500 font-black uppercase tracking-tighter mb-1">
+                  <h3 className="font-bold text-slate-900 mb-0.5">{r.name}</h3>
+                  <p className="text-[9px] text-emerald-600 font-black uppercase tracking-tighter mb-1">
                     {r.type === 'illegal' ? 'CORREDOR ILEGAL' : r.type === 'fluvial' ? 'RUTA FLUVIAL' : 'TROCHA'}
                   </p>
                   <button
-                    className="w-full bg-slate-800 hover:bg-slate-700 py-1.5 rounded text-[10px] text-slate-200 font-bold transition-colors"
+                    className="w-full bg-slate-100 hover:bg-slate-200 py-1.5 rounded text-[10px] text-slate-800 font-bold transition-colors border border-slate-200"
                     onClick={() => handleRouteClick(r)}
                   >
                     VER DETALLES
@@ -374,12 +374,12 @@ const TacticalMap: React.FC<TacticalMapProps> = ({
       {/* Leyenda SDRGA (Only if Active) */}
       {
         activeLayers.has(IntelligenceLayer.SDRGA) && (
-          <div className="absolute top-6 left-1/2 -translate-x-1/2 bg-slate-950/90 backdrop-blur-xl px-6 py-3 rounded-full border border-red-900/50 z-[1000] shadow-[0_0_50px_rgba(220,38,38,0.3)] flex items-center gap-6">
-            <span className="text-[10px] font-black text-red-500 uppercase tracking-widest flex items-center gap-2">
-              <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div> SISTEMA SDRGA ACTIVO
+          <div className="absolute top-6 left-1/2 -translate-x-1/2 bg-white/90 backdrop-blur-xl px-6 py-3 rounded-full border border-slate-200 z-[1000] shadow-lg flex items-center gap-6">
+            <span className="text-[10px] font-black text-red-600 uppercase tracking-widest flex items-center gap-2">
+              <div className="w-2 h-2 bg-red-600 rounded-full animate-pulse"></div> SISTEMA SDRGA ACTIVO
             </span>
-            <div className="h-4 w-px bg-slate-800"></div>
-            <div className="flex gap-4 text-[9px] font-bold text-slate-400">
+            <div className="h-4 w-px bg-slate-200"></div>
+            <div className="flex gap-4 text-[9px] font-bold text-slate-500">
               <span className="flex items-center gap-1"><div className="w-2 h-2 bg-green-500 rounded-sm"></div> VERDE</span>
               <span className="flex items-center gap-1"><div className="w-2 h-2 bg-yellow-500 rounded-sm"></div> AMARILLO</span>
               <span className="flex items-center gap-1"><div className="w-2 h-2 bg-red-600 rounded-sm"></div> ROJO</span>
