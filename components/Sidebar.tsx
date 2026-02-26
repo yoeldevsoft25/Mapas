@@ -51,11 +51,11 @@ const Sidebar: React.FC<SidebarProps> = ({
   };
 
   const layerButtons = [
-    { id: IntelligenceLayer.FRONTS, icon: ShieldAlert, label: 'Frentes Guerrilleros', color: 'text-red-500' },
-    { id: IntelligenceLayer.ACTIONS, icon: Activity, label: 'Acciones Militares', color: 'text-orange-500' },
-    { id: IntelligenceLayer.INFRASTRUCTURE, icon: Warehouse, label: 'Infraestructura Ilegal', color: 'text-yellow-500' },
-    { id: IntelligenceLayer.ROUTES, icon: Navigation, label: 'Rutas y Trochas', color: 'text-emerald-500' },
-    { id: IntelligenceLayer.URBAN, icon: Building2, label: 'Presencia Urbana', color: 'text-blue-500' },
+    { id: IntelligenceLayer.FRONTS, icon: ShieldAlert, label: 'Frentes Guerrilleros', color: 'text-red-600' },
+    { id: IntelligenceLayer.ACTIONS, icon: Activity, label: 'Acciones Militares', color: 'text-orange-600' },
+    { id: IntelligenceLayer.INFRASTRUCTURE, icon: Warehouse, label: 'Infraestructura Ilegal', color: 'text-yellow-600' },
+    { id: IntelligenceLayer.ROUTES, icon: Navigation, label: 'Rutas y Trochas', color: 'text-emerald-600' },
+    { id: IntelligenceLayer.URBAN, icon: Building2, label: 'Presencia Urbana', color: 'text-blue-600' },
   ];
 
   return (
@@ -103,8 +103,8 @@ const Sidebar: React.FC<SidebarProps> = ({
             onClick={onSDRGARequested}
             disabled={isRunningSDRGA || activeLayers.has(IntelligenceLayer.SDRGA)}
             className={`w-full flex items-center justify-between p-3 rounded-lg transition-all border ${activeLayers.has(IntelligenceLayer.SDRGA)
-                ? 'bg-red-50 border-red-300 text-red-900 shadow-sm'
-                : 'bg-white hover:bg-slate-50 border-slate-200 text-slate-600'
+              ? 'bg-red-50 border-red-300 text-red-900 shadow-sm'
+              : 'bg-white hover:bg-slate-50 border-slate-200 text-slate-600'
               }`}
           >
             <div className="flex items-center gap-3">
@@ -128,8 +128,8 @@ const Sidebar: React.FC<SidebarProps> = ({
             onClick={onPredictionRequested}
             disabled={isPredicting || activeLayers.has(IntelligenceLayer.PREDICTIONS)}
             className={`w-full flex items-center justify-between p-3 rounded-lg transition-all border ${activeLayers.has(IntelligenceLayer.PREDICTIONS)
-                ? 'bg-purple-50 border-purple-300 text-purple-900'
-                : 'bg-white hover:bg-slate-50 border-slate-200 text-slate-600'
+              ? 'bg-purple-50 border-purple-300 text-purple-900'
+              : 'bg-white hover:bg-slate-50 border-slate-200 text-slate-600'
               }`}
           >
             <div className="flex items-center gap-3">
@@ -151,8 +151,8 @@ const Sidebar: React.FC<SidebarProps> = ({
             key={id}
             onClick={() => toggleLayer(id)}
             className={`w-full flex items-center justify-between p-3 rounded-lg transition-all ${activeLayers.has(id)
-                ? 'bg-slate-100 text-slate-900 shadow-sm border border-slate-200'
-                : 'text-slate-500 hover:bg-slate-50 hover:text-slate-800'
+              ? 'bg-slate-100 text-slate-900 shadow-sm border border-slate-200'
+              : 'text-slate-500 hover:bg-slate-50 hover:text-slate-800'
               }`}
           >
             <div className="flex items-center gap-3">

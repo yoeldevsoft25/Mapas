@@ -21,15 +21,24 @@ import {
   MOCK_URBAN
 } from '../constants';
 
-const createIcon = (color: string, pulse = true) => L.divIcon({
-  html: `<div class="group relative">
-           <div class="w-4 h-4 rounded-full bg-${color}-600 border-2 border-white shadow-sm transition-transform group-hover:scale-125"></div>
-           ${pulse ? `<div class="absolute inset-0 w-4 h-4 rounded-full bg-${color}-600 animate-ping opacity-25"></div>` : ''}
-         </div>`,
-  className: 'custom-div-icon',
-  iconSize: [16, 16],
-  iconAnchor: [8, 8],
-});
+const createIcon = (colorKey: string, pulse = true) => {
+  const bgClass = {
+    red: 'bg-red-600',
+    orange: 'bg-orange-600',
+    yellow: 'bg-yellow-600',
+    blue: 'bg-blue-600'
+  }[colorKey] || 'bg-slate-600';
+
+  return L.divIcon({
+    html: `<div class="group relative">
+             <div class="w-4 h-4 rounded-full ${bgClass} border-2 border-white shadow-sm transition-transform group-hover:scale-125"></div>
+             ${pulse ? `<div class="absolute inset-0 w-4 h-4 rounded-full ${bgClass} animate-ping opacity-25"></div>` : ''}
+           </div>`,
+    className: 'custom-div-icon',
+    iconSize: [16, 16],
+    iconAnchor: [8, 8],
+  });
+};
 
 // Advanced Threat Scope Icon
 const predictionIcon = L.divIcon({
