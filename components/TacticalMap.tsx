@@ -23,8 +23,8 @@ import {
 
 const createIcon = (color: string, pulse = true) => L.divIcon({
   html: `<div class="group relative">
-           <div class="w-4 h-4 rounded-full bg-${color}-500 border-2 border-white shadow-[0_0_10px_rgba(0,0,0,0.2)] transition-transform group-hover:scale-125"></div>
-           ${pulse ? `<div class="absolute inset-0 w-4 h-4 rounded-full bg-${color}-500 animate-ping opacity-25"></div>` : ''}
+           <div class="w-4 h-4 rounded-full bg-${color}-600 border-2 border-white shadow-sm transition-transform group-hover:scale-125"></div>
+           ${pulse ? `<div class="absolute inset-0 w-4 h-4 rounded-full bg-${color}-600 animate-ping opacity-25"></div>` : ''}
          </div>`,
   className: 'custom-div-icon',
   iconSize: [16, 16],
@@ -52,9 +52,9 @@ const getSDRGAIcon = (level: RiskLevel) => {
   let shadowColor = '#22c55e';
 
   if (level === RiskLevel.AMARILLO) {
-    colorClass = 'bg-yellow-500';
-    borderClass = 'border-yellow-400';
-    shadowColor = '#eab308';
+    colorClass = 'bg-yellow-600';
+    borderClass = 'border-yellow-700';
+    shadowColor = '#ca8a04';
   } else if (level === RiskLevel.ROJO) {
     colorClass = 'bg-red-600';
     borderClass = 'border-red-500';
@@ -81,8 +81,8 @@ const getSDRGAIcon = (level: RiskLevel) => {
 
 const getLevelColor = (level: RiskLevel) => {
   switch (level) {
-    case RiskLevel.VERDE: return '#22c55e';
-    case RiskLevel.AMARILLO: return '#eab308';
+    case RiskLevel.VERDE: return '#16a34a';
+    case RiskLevel.AMARILLO: return '#ca8a04';
     case RiskLevel.ROJO: return '#dc2626';
     case RiskLevel.NEGRO: return '#000000';
     default: return '#000000';
@@ -215,7 +215,7 @@ const TacticalMap: React.FC<TacticalMapProps> = ({
             <Circle
               center={[p.lat, p.lng]}
               radius={35000}
-              pathOptions={{ color: '#ef4444', fillColor: '#ef4444', fillOpacity: 0.1, dashArray: '10, 10', weight: 1 }}
+              pathOptions={{ color: '#dc2626', fillColor: '#dc2626', fillOpacity: 0.1, dashArray: '10, 10', weight: 1 }}
             />
           </React.Fragment>
         ))}
@@ -296,8 +296,8 @@ const TacticalMap: React.FC<TacticalMapProps> = ({
                 position={[alert.probableDestination.lat, alert.probableDestination.lng]}
                 icon={L.divIcon({
                   html: `<div class="relative w-0 h-0 flex items-center justify-center">
-                           <div class="absolute w-4 h-4 rounded-full border-2 border-red-500 animate-ping"></div>
-                           <div class="absolute w-2 h-2 bg-red-600 rounded-full"></div>
+                           <div class="absolute w-4 h-4 rounded-full border-2 border-red-600 animate-ping"></div>
+                           <div class="absolute w-2 h-2 bg-red-700 rounded-full"></div>
                            <div class="absolute w-8 h-[1px] bg-red-400"></div>
                            <div class="absolute h-8 w-[1px] bg-red-400"></div>
                          </div>`,
@@ -380,10 +380,10 @@ const TacticalMap: React.FC<TacticalMapProps> = ({
             </span>
             <div className="h-4 w-px bg-slate-200"></div>
             <div className="flex gap-4 text-[9px] font-bold text-slate-500">
-              <span className="flex items-center gap-1"><div className="w-2 h-2 bg-green-500 rounded-sm"></div> VERDE</span>
-              <span className="flex items-center gap-1"><div className="w-2 h-2 bg-yellow-500 rounded-sm"></div> AMARILLO</span>
-              <span className="flex items-center gap-1"><div className="w-2 h-2 bg-red-600 rounded-sm"></div> ROJO</span>
-              <span className="flex items-center gap-1"><div className="w-2 h-2 bg-black border border-red-500 rounded-sm"></div> NEGRO</span>
+              <span className="flex items-center gap-1"><div className="w-2 h-2 bg-green-600 rounded-sm"></div> VERDE</span>
+              <span className="flex items-center gap-1"><div className="w-2 h-2 bg-yellow-600 rounded-sm"></div> AMARILLO</span>
+              <span className="flex items-center gap-1"><div className="w-2 h-2 bg-red-700 rounded-sm"></div> ROJO</span>
+              <span className="flex items-center gap-1"><div className="w-2 h-2 bg-black border border-red-600 rounded-sm"></div> NEGRO</span>
             </div>
           </div>
         )
