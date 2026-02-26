@@ -24,23 +24,57 @@
 }
 
 @media print {
+    * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        forced-color-adjust: none !important;
+    }
+
     body {
         background: white !important;
         color: black !important;
+        overflow: visible !important;
+        height: auto !important;
     }
 
     .no-print {
         display: none !important;
     }
 
+    /* Reducimos el filtro para que no se pierdan los detalles del mapa */
     .leaflet-container {
-        filter: grayscale(1) contrast(1.2);
+        filter: contrast(1.1) brightness(1.1) !important;
+        background: white !important;
+        height: 600px !important;
+        /* Altura fija para evitar que colapse en impresión */
+        position: relative !important;
     }
 
     aside,
     header,
     footer {
-        border-color: #000 !important;
+        background: white !important;
+        border-color: #cbd5e1 !important;
+        color: #000 !important;
+    }
+
+    /* Aseguramos que los labels y markers sean legibles */
+    .leaflet-marker-icon,
+    .leaflet-marker-shadow {
+        display: block !important;
+    }
+
+    /* Reset de los contenedores de la App para impresión */
+    .flex.h-screen {
+        height: auto !important;
+        display: block !important;
+        overflow: visible !important;
+    }
+
+    main {
+        overflow: visible !important;
+        height: auto !important;
+        display: block !important;
     }
 }
 
