@@ -23,11 +23,11 @@ import {
 
 const createIcon = (colorKey: string, pulse = true) => {
   const bgClass = {
-    red: 'bg-[#b91c1c]', // red-700
-    orange: 'bg-[#c2410c]', // orange-700
-    yellow: 'bg-[#b45309]', // amber-700 (standard yellow is too light)
-    blue: 'bg-[#1d4ed8]' // blue-700
-  }[colorKey] || 'bg-slate-700';
+    red: 'bg-red-600',
+    orange: 'bg-orange-600',
+    yellow: 'bg-yellow-600',
+    blue: 'bg-blue-600'
+  }[colorKey] || 'bg-slate-600';
 
   return L.divIcon({
     html: `<div class="group relative">
@@ -90,9 +90,9 @@ const getSDRGAIcon = (level: RiskLevel) => {
 
 const getLevelColor = (level: RiskLevel) => {
   switch (level) {
-    case RiskLevel.VERDE: return '#15803d'; // green-700
-    case RiskLevel.AMARILLO: return '#b45309'; // amber-700
-    case RiskLevel.ROJO: return '#b91c1c'; // red-700
+    case RiskLevel.VERDE: return '#16a34a';
+    case RiskLevel.AMARILLO: return '#ca8a04';
+    case RiskLevel.ROJO: return '#dc2626';
     case RiskLevel.NEGRO: return '#000000';
     default: return '#000000';
   }
@@ -209,12 +209,13 @@ const TacticalMap: React.FC<TacticalMapProps> = ({
       <MapContainer
         center={COLOMBIA_CENTER}
         zoom={6}
+        className="map-high-contrast"
         style={{ height: '100%', width: '100%', background: '#ffffff' }}
         zoomControl={false}
       >
         <TileLayer
           attribution='&copy; CARTO'
-          url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
+          url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
         />
 
         {/* Standard Layers */}
@@ -343,7 +344,7 @@ const TacticalMap: React.FC<TacticalMapProps> = ({
             <Polyline
               positions={r.path.map(pt => [pt.lat, pt.lng] as [number, number])}
               pathOptions={{
-                color: r.type === 'illegal' ? '#047857' : r.type === 'fluvial' ? '#0369a1' : '#b45309', // emerald, sky, amber (700 weights)
+                color: r.type === 'illegal' ? '#059669' : r.type === 'fluvial' ? '#0284c7' : '#d97706',
                 weight: 4,
                 opacity: 0.8,
                 dashArray: r.type === 'trocha' ? '5, 10' : undefined
@@ -372,7 +373,7 @@ const TacticalMap: React.FC<TacticalMapProps> = ({
             </Polyline>
             <RouteDecorator
               positions={r.path.map(pt => [pt.lat, pt.lng] as [number, number])}
-              color={r.type === 'illegal' ? '#047857' : r.type === 'fluvial' ? '#0369a1' : '#b45309'}
+              color={r.type === 'illegal' ? '#059669' : r.type === 'fluvial' ? '#0284c7' : '#d97706'}
             />
           </React.Fragment>
         ))}
@@ -389,9 +390,9 @@ const TacticalMap: React.FC<TacticalMapProps> = ({
             </span>
             <div className="h-4 w-px bg-slate-200"></div>
             <div className="flex gap-4 text-[9px] font-bold text-slate-500">
-              <span className="flex items-center gap-1"><div className="w-2 h-2 bg-[#15803d] rounded-sm"></div> VERDE</span>
-              <span className="flex items-center gap-1"><div className="w-2 h-2 bg-[#b45309] rounded-sm"></div> AMARILLO</span>
-              <span className="flex items-center gap-1"><div className="w-2 h-2 bg-[#b91c1c] rounded-sm"></div> ROJO</span>
+              <span className="flex items-center gap-1"><div className="w-2 h-2 bg-green-600 rounded-sm"></div> VERDE</span>
+              <span className="flex items-center gap-1"><div className="w-2 h-2 bg-yellow-600 rounded-sm"></div> AMARILLO</span>
+              <span className="flex items-center gap-1"><div className="w-2 h-2 bg-red-700 rounded-sm"></div> ROJO</span>
               <span className="flex items-center gap-1"><div className="w-2 h-2 bg-black border border-red-600 rounded-sm"></div> NEGRO</span>
             </div>
           </div>

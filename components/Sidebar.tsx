@@ -51,11 +51,11 @@ const Sidebar: React.FC<SidebarProps> = ({
   };
 
   const layerButtons = [
-    { id: IntelligenceLayer.FRONTS, icon: ShieldAlert, label: 'Frentes Guerrilleros', color: 'text-[#b91c1c]' }, // red-700
-    { id: IntelligenceLayer.ACTIONS, icon: Activity, label: 'Acciones Militares', color: 'text-[#c2410c]' }, // orange-700
-    { id: IntelligenceLayer.INFRASTRUCTURE, icon: Warehouse, label: 'Infraestructura Ilegal', color: 'text-[#b45309]' }, // amber-700
-    { id: IntelligenceLayer.ROUTES, icon: Navigation, label: 'Rutas y Trochas', color: 'text-[#047857]' }, // emerald-700
-    { id: IntelligenceLayer.URBAN, icon: Building2, label: 'Presencia Urbana', color: 'text-[#1d4ed8]' }, // blue-700
+    { id: IntelligenceLayer.FRONTS, icon: ShieldAlert, label: 'Frentes Guerrilleros', color: 'text-red-600' },
+    { id: IntelligenceLayer.ACTIONS, icon: Activity, label: 'Acciones Militares', color: 'text-orange-600' },
+    { id: IntelligenceLayer.INFRASTRUCTURE, icon: Warehouse, label: 'Infraestructura Ilegal', color: 'text-yellow-600' },
+    { id: IntelligenceLayer.ROUTES, icon: Navigation, label: 'Rutas y Trochas', color: 'text-emerald-600' },
+    { id: IntelligenceLayer.URBAN, icon: Building2, label: 'Presencia Urbana', color: 'text-blue-600' },
   ];
 
   return (
